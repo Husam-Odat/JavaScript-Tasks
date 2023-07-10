@@ -18,7 +18,7 @@ console.log(x.includes("i"));
 console.log(x.endsWith("t"))
 console.log(50+30+x+y);
 
-console.log(the name = ${name} the age = ${age});
+console.log(`the name = ${name} the age = ${age}`);
 let current_date = new Date();
 console.log(current_date.getFullYear());
 
