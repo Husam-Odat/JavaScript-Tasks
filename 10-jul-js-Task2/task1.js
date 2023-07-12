@@ -4,6 +4,7 @@
   let num1T1 = 10 ;
   let num2T1 = 20 ;
   let massegeT1 = "Task 1 answer is : " ;
+
   if ( num1T1 > num1T1){
     alert (massegeT1 + num1T1);
   }
@@ -25,6 +26,7 @@ let num1T2 = 3 ;
 let num2T2 = -7 ;
 let num3T2 = 2 ;
 let multi = num1T2 * num2T2 * num3T2 ;
+
 if (multi < 0 ){
  alert (" Task 2 : The sign is -");
 }
