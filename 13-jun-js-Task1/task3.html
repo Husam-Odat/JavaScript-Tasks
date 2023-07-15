@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <select name="country" id="country" onchange="flag()">
+        <option id="jordan" value="./img/jo.jpg" >jordan</option>
+        <option id="palestine" value="./img/pl.jpg" >palestine</option>
+        <option id="iraq" value="./img/iraq.jpg" >iraq</option>
+        
+    </select>
+    <br />
+    <img src="./img/jo.jpg" name="image-swap" style="height: 200px;" id="photo" />
+    
+    <script>
+
+    // const selectElement = document.getElementById("country");
+    // const imageElement = document.getElementById("photo");
+
+    // selectElement.addEventListener("change", function() {
+    // const selectedValue = selectElement.value;
+    // imageElement.src = selectedValue;});
+
+        let select = document.getElementById("country");
+        const photo = document.getElementById("photo");
+        select.addEventListener("change" ,function(){
+
+            const selectedValue = select.value;
+            photo.src= selectedValue;
+            
+        });
+
+
+
+
+
+
+        // let jordan = document.getElementById("jordan");
+        // jordan.addEventListener("change" ,function(){
+            
+        //     const photo = document.getElementById("photo");
+        //     photo.src="jo.jpg";
+            
+        // });
+
+        // let palestine = document.getElementById("palestine");
+        
+        // palestine.addEventListener("change" ,function(){
+        //     const photo = document.getElementsByTagName("img");
+        //     photo.src="pl.jpg";
+            
+        // });
+
+        // function flag(){
+        //     let x= document.getElementById("country").value;
+          
+        //     switch(x)
+        //     {
+        //      case "jordan" : document.getElementById("photo").src="jo.jpg"; break;
+        //      case "palestine" : document.getElementById("photo").src="pl.jpg"; break;
+        //      case "iraq" : document.getElementById("photo").src="iraq.jpg"; break;
+            
+            
+     
+        //     }
+     
+        //  }
+
+
+    </script>
+    
+</body>
+</html>

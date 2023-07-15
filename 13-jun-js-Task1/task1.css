@@ -1,0 +1,9 @@
+#outerDiv{
+    display: flex;
+    flex-direction: row;
+}
+
+.outerDiv .img  {
+    height: 200px;
+    width: 200px;
+}

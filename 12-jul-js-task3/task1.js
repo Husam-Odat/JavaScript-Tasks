@@ -151,7 +151,7 @@ function multiply (mulNu1 , mulNu2) {
 console.log(mulNu1 * mulNu2);
 
 }
-multiply (3 , 4);
+multiply (3 , 4 , 6);
 multiply (5 , 4);
 
 /*
