@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ... -->
+</head>
+<body>
+    <!-- ... Your HTML content ... -->
+    
+    <script>
+        // Function to retrieve values from Local Storage and populate the fields
+        function populateFields() {
+            // Assume you have an array with the IDs of the input fields
+            var inputIds = ["name", "age", "gender", "date", "Des", "m&u"];
+
+            // Loop through the input fields and retrieve their values from Local Storage
+            inputIds.forEach(function(id) {
+                var storedValue = localStorage.getItem(id);
+                if (storedValue) {
+                    document.getElementById(id).value = storedValue;
+                }
+            });
+
+            // Assume you have an array with the IDs of the checkbox fields
+            var checkboxIds = ["programming language 1", "programming language 2", "programming language 3"];
+
+            // Loop through the checkbox fields and retrieve their values from Local Storage
+            checkboxIds.forEach(function(id) {
+                var storedValue = localStorage.getItem(id);
+                if (storedValue === "true") {
+                    document.getElementById(id).checked = true;
+                }
+            });
+        }
+
+        // Call the function to populate the fields when the page is loaded
+        populateFields();
+
+        // Function to store values in Local Storage
+        function form1(name, id) {
+            localStorage.setItem(id, name);
+            document.getElementById(`${id}out`).innerHTML = `${id}: ` + localStorage.getItem(id);
+        }
+
+        function form2(name, id) {
+            localStorage.setItem(id, name);
+            document.getElementById(`${id}out`).innerHTML = `${id}: ` + localStorage.getItem(id);
+        }
+
+        // Optional: You can add an event listener to handle page refresh
+        window.addEventListener("beforeunload", function() {
+            // Assume you have an array with the IDs of the input and checkbox fields
+            var allIds = ["name", "age", "gender", "date", "Des", "m&u", "programming language 1", "programming language 2", "programming language 3"];
+
+            // Loop through all the fields and store their current values in Local Storage
+            allIds.forEach(function(id) {
+                var fieldValue = document.getElementById(id).value;
+                if (document.getElementById(id).type === "checkbox") {
+                    fieldValue = document.getElementById(id).checked;
+                }
+                localStorage.setItem(id, fieldValue);
+            });
+        });
+    </script>
+</body>
+</html>

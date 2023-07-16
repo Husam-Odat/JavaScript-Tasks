@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div >
+        <div>
+    <h2>card1</h2>
+    <label  for="name">name 
+        <input type="text" id="name" value="localStorage.getItem.${id}" onkeydown="form1(this.value , this.id)">
+    </label>
+    <!-- <p id="nameout"></p> -->
+    
+   
+    <br>
+    
+    <label for="age">age 
+        <input type="text" id="age" value="" onkeydown="form1(this.value , this.id)" >
+    </label>
+    <!-- <p id="ageout"></p> -->
+    <br>
+    
+    <label for="gender">gender 
+        <input type="text" id="gender" value="" onkeydown="form1(this.value , this.id)">
+    </label>
+    <!-- <p id="genderout"></p> -->
+    <br>
+    
+    <label for="date">date 
+        <input type="date" id="date" value="" onchange="form1(this.value , this.id)" >
+    </label>
+    <!-- <p id="dateout"></p> -->
+</div>
+<div style="border: 5px black solid;">
+    <p id="nameout"></p>
+    <p id="ageout"></p>
+    <p id="genderout"></p>
+    <p id="dateout"></p>
+    
+    
+</div>
+</div>
+<!-- ---------------------------------------------------------------------- -->
+<h2>card2</h2>
+<hr>
+<div >
+    <div>
+<label  for="Des">Description 
+    <input type="text" id="Des" value="" onkeydown="form1(this.value , this.id)">
+</label>
+<!-- <p id="nameout"></p> -->
+
+   
+<br>
+
+<label for="m&u">Major & University 
+    <input type="text" id="m&u" value="" onkeydown="form1(this.value , this.id)" >
+</label>
+<!-- <p id="ageout"></p> -->
+<br>
+
+<label for="prog">programming languages <br>
+    
+    <input type="checkbox" id="programming language 1" name="vehicle1" value="html" onclick="form2(this.value , this.id)">
+    <label for="programming language 1"> html</label><br>
+    <input type="checkbox" id="programming language 2" name="vehicle2" value="css" onclick="form2(this.value , this.id)">
+    <label for="programming language 2"> css</label><br>
+    <input type="checkbox" id="programming language 3" name="vehicle3" value="js" onclick="form2(this.value , this.id)">
+    <label for="programming language 3"> js</label><br>
+
+</label>
+<!-- <p id="genderout"></p> -->
+<br>
+
+</div>
+<div style="border: 5px black solid;">
+<p id="Desout"></p>
+<p id="m&uout"></p>
+<p id="progout"></p>
+<p id="programming language 1out"></p>
+<p id="programming language 2out"></p>
+<p id="programming language 3out"></p>
+
+
+</div>
+</div>
+
+
+
+<div>
+<h2>card 3</h2>
+<hr>
+<div >
+    <div>
+
+
+<label for="slipings number">slipings number 
+    <input type="text" id="slipings number" value="" onclick="form1(this.value , this.id)" >
+</label>
+<br>
+<label  for="Description of slipings">Description of slipings 
+    <input type="text" id="Description of slipings" value="" onclick="form1(this.value , this.id)">
+</label>
+<!-- <p id="nameout"></p> -->
+<br>
+
+    <input type="submit" value="submit" onclick="form1(this.value , this.id)" >
+   
+
+</div>
+<div style="border: 5px black solid;">
+    <p id="slipings numberout"></p>
+    <p id="Description of slipingsout"></p>
+   
+    
+    
+    </div>
+
+
+
+    <script>
+        // let name = document.getElementById("name").value;
+        // console.log(name)
+        // if(localStorage.length > 0){
+        //     for(let i ; i < input.length ; i++){
+        //     var x = localStorage.getItem[`${input[i].id}`]
+        //     input[i].value=x
+        //     }
+        //     }
+        // let form1= document.getElementById("form1")
+        // let input_form1 =form1.getElementsByTagName("input")
+        // if(localStorage.length-1>0){
+        // for (let j = 0; j < input_form1.length-1; j++) {
+
+        // input_form1[j].value=localStorage.getItem(`${input_form1[j].name}`)
+        // }
+        // }
+    // if(localStorage.length-1>0)
+    // localStorage.setItem.key = localStorage.getItem.key
+
+        function form1 (name , id)
+    {
+    localStorage.setItem('name',name)
+    document.getElementById(`${id}out`).innerHTML =`${id} : `+ localStorage.name;
+    localStorage.setItem(id , name)
+    
+    }
+        function form2 (name , id)
+    {
+    localStorage.setItem('name',name)
+    document.getElementById(`${id}out`).innerHTML = `${id} : `+ localStorage.name;
+    localStorage.setItem(id , name)
+    }
+
+
+
+
+ 
+        
+
+
+    </script>
+</body>
+</html>
