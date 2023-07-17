@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            width: 100%;
+        }
+        th{
+            padding: 10px;
+            background-color: aqua;
+            font-size:xx-large
+        }
+        td{
+            padding: 10px;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            font-size: x-large;
+        }
+        /* td:nth-child(even), th:nth-child(even){
+            background-color: lightblue;
+        } */
+        tr:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.3);
+        }
+        img{
+            height: 150px;
+            /* width: 20px; */
+        }
+       
+    </style>
+</head>
+<body>
+    <!-- <div id="demo"></div> -->
+    <!-- <input type="button" value="" onclick="form()"> -->
+    <input type="submit" onclick="form()">
+<table >
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>university</th>
+            <th>photo</th>
+            <th>Hobbey</th>
+        </tr>
+
+        
+    </thead>
+    <tbody>
+        <tr>
+            <td ></td>
+            <td ></td>
+            <td ></td>
+            <td ><img src="" alt=""></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><img src="" alt=""></td>
+            <td></td>
+        </tr>
+        
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><img src="" alt=""></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><img src="" alt=""></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+
+
+    <script>
+        
+        const x = new XMLHttpRequest();
+        x.open("GET" , "task1.1.JSON");
+
+        x.onload = function() {
+        const obj = JSON.parse(this.responseText);
+        console.log(obj);
+        // document.getElementById("demo").innerHTML=obj.name[0];
+        //function form(){
+        for (const key in obj) {
+        console.log(`${key}: ${obj[key]}`);
+            for(let m =0;m<5 ;m++) {
+        document.getElementsByTagName("td")[m*5].innerHTML = obj.name[m];
+        document.getElementsByTagName("td")[m*5+1].innerHTML = obj.age[m];
+        document.getElementsByTagName("td")[m*5+2].innerHTML = obj.university[m];
+        // document.getElementsByTagName("td")[m*5+3].innerHTML = obj.photo[m];
+        document.getElementsByTagName("td")[m*5+4].innerHTML = obj.hobbiey[m];
+
+        document.getElementsByTagName("img")[m].src = obj.photo[m];
+
+            }
+        }
+
+        // -----------Create Table------------------------------------
+
+        // const table = document.createElement("table");
+        // document.body.appendChild(table);
+        
+        // for(let i=0 ; i< obj.key.length ; i++)
+        // {
+        // const tr = document.createElement("tr");
+        // table.appendChild(tr);
+        //     }
+        // for(let j=0 ; j<1 ; j++){
+        // const th = document.createElement("th");
+        // tr.appendChild(th);
+        //     }
+
+        // for(let k=0 ; k<4 ; k++){
+        // const td = document.createElement("td");
+        // tr.appendChild(td);
+        //     }
+// -----------insert data in table------------------------------------
+        // for (const key in obj) {
+        // console.log(`${key}: ${obj[key]}`);
+        // let b = 0;
+        // document.getElementsByTagName("td")[b].innerHTML = obj[key];
+        //  b = h++;
+        // }
+
+        // for(let i=0 ; i < obj.key.length ; i++)
+        // document.getElementsByTagName()
+        // }
+
+        // head = []
+
+        // const table = document.createElement("table");
+        // for(let i=0 ; i<4 ; i++)
+        // const tr = document.createElement("tr");
+        // table.appendChild(tr);
+        
+        // for(let j=0 ; j<1 ; j++)
+        // const th = document.createElement("th");
+        // tr.appendChild(th);
+
+        // for(let k=0 ; k<1 ; k++)
+        // const td = document.createElement("td");
+        // tr.appendChild(td)
+
+    //}
+        
+        
+    }
+    x.send();
+
+    </script>
+</body>
+</html>

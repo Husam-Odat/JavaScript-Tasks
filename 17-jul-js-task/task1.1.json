@@ -1,0 +1,8 @@
+{
+    "name": ["husam" , "mohammad" , "sereen" , "sajeda"],
+    "age" : [26 , 25 , 24 , 23] ,
+    "university" : ["just" , "ju" , "yu" , "pdu"],
+    "photo": ["./img/b1.png" , "./img/b2.png" , "./img/g1.png" , "./img/g2.png" ],
+    "hobbiey" : ["golf" , "windsurfing" , "horse racing" , "puzzles"]
+
+        }
