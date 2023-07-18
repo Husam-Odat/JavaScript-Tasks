@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <STYle>
+        table{
+            width: 100%;
+        }
+        th{
+            padding: 10px;
+            background-color: aqua;
+            font-size:xx-large
+        }
+        td{
+            padding: 10px;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            font-size: x-large;
+        }
+        /* td:nth-child(even), th:nth-child(even){
+            background-color: lightblue;
+        } */
+        tr:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.3);
+        }
+        img{
+            height: 150px;
+            /* width: 20px; */
+        }
+    </STYle>
+</head>
+<body>
+    <table >
+        <thead>
+            <tr>
+                <th>Country</th>
+                <th>Region</th>
+                <th>capital</th>
+                <th>Population</th>
+                
+                <th>Flag</th>
+            </tr>
+    
+        </thead>
+        <tbody id="tabel">
+            
+        </tbody>
+    </table>
+
+    
+<script >
+
+//    - ---------------------------------------------------------------------
+    
+
+// 'use strict';
+// const btn = document.querySelector('.btn-country');
+// const countriesContainer =document.querySelector('.countries');
+// let tabel= document.getElementById("tabel")
+const request = new XMLHttpRequest();
+
+request.open('GET', 'https://restcountries.com/v3.1/all');
+request.send();
+console.log(request.responseText);
+
+request.addEventListener('load', function(){
+    
+    console.log(this.responseText);
+    const data = JSON.parse(this.responseText);
+    let print=``
+   for (let i = 0; i < data.length; i++) {
+    if(data[i].name.common != "Israel" && data[i].population > 500000 ) {
+        print +=`<tr>
+                <td>${data[i].name.common}</td>
+                <td>${data[i].region}</td>
+                <td>${data[i].capital}</td>
+                <td>${(+data[i].population/1000000).toFixed(1)}M</td>
+                
+                <td><img src=${data[i].flags.png}></td>
+
+            </tr>`
+
+    }
+   
+tabel.innerHTML=print
+    
+   }
+});
+
+// const html= `
+// <article class="country">
+//     <img class="country__img" src="${data[0].flags.png}" />
+//     <div class="country__data">
+//         <h3 class="country__name">${data[0].name.common}</h3>
+//         <h2 class="country__region">${data[0].region}</h4>
+//             <p class="country__row"><span>x</span>${(+data[0].population/1000000).toFixed(1)}</p>
+//          <p class="country__row"><span>x</span>${data[0].languages.ara}languages</p>
+//          <p class="country__row"><span>Y</span>${data[0].currencies}currencies</p> 
+//          </div> 
+//          </article>
+//          `;
+
+// countriesContainer.insertAdjacentHTML('beforeeend',html);
+// countriesContainer.style.opacity = 1;
+
+
+
+
+
+
+// const request = new XMLHttpRequest();
+// request.open('GET', 'https://restcountries.eu/rest/v2/name/Canada');
+
+// request.onload = function () {
+//   if (request.status === 200) {
+//     const responseData = JSON.parse(request.responseText);
+//     console.log("Country Name:", responseData[0].name);
+//     console.log("Capital:", responseData[0].capital);
+//     console.log("Population:", responseData[0].population);
+//     // Add more properties as needed
+//   } else {
+//     console.error("Request failed. Status:", request.status);
+//   }
+// };
+
+// request.onerror = function () {
+//   console.error("Request error occurred.");
+// };
+
+// request.send();
+
+
+
+        
+        
+
+//         for(let k=0 ; k<3 ; k++){
+//         const td = document.createElement("td");
+//         td.innerHTML = `${data[k].name.common}`;
+//         tr.appendChild(td);
+//             }
+
+
+
+// const divcontainer = document.createElement("div");
+//     divcontainer.style = "display:flex; flex-direction:row ;  flex-wrap: wrap; justify-content:space-evenly ";
+//     for(let i=0 ; i< 2 ; i++) {
+
+//         const divcard = document.createElement("div");
+//         divcard.style = "border : 5px solid black ; width : 200px ";
+//         const head = document.createElement("h2");
+//         head.style = "text-align: center";
+//         head.innerHTML = `${data[0].name.common}`;
+
+//         const p = document.createElement("p");
+//         p.innerHTML = `${data[0].region}`;
+//         p.style="font-size:16px ; text-align:center"
+//         const imag = document.createElement("img");
+//         imag.src = `${data[0].flags.png}`;
+//         imag.style = "height:300px ; width : 100%"
+
+
+
+       
+//         document.body.appendChild(divcontainer);
+//         divcontainer.appendChild(divcard);
+//         divcard.appendChild(head);
+//         divcard.appendChild(p);
+//         divcard.appendChild(imag);
+        
+//     }
+
+</script>
+</body>
+</html>
