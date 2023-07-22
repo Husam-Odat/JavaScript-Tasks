@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         table{
+            width: 100%;
+        }
+        th{
+            padding: 10px;
+            background-color: black;
+            font-size:xx-large;
+            color:white
+        }
+        td{
+            padding: 10px;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            font-size: x-large;
+        }
+        /* td:nth-child(even), th:nth-child(even){
+            background-color: lightblue;
+        } */
+        tr:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.3);
+        }
+     
+
+        #container{
+            width: 50%;
+            margin:10% 25%  ;
+        }
+
+
+        input[type=text], select {
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        /* display: inline-block; */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+        #submitbtn{
+            width: 25%;
+        
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer
+        }
+        input[type=button] {
+        width: 50%;
+        background-color: #0628e7;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        input[type=button]:hover {
+        background-color: #45a0a0;
+        }
+
+        h2{
+            text-align: center;
+            /* margin: 10% 40%; */
+            font-size:70px;
+            font-weight:900;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h2>To Do List</h2>
+        <div id="searchAdd">
+            <label for="">
+                <input type="text" id="addTask" name="addTask" placeholder="Enter Task Description">
+                <input onclick="addTask()" type="button" value="Add" id="submitbtn">
+            </label>
+            <input style="width: 100%;" type="text" id="searchTask" name="searchTask" placeholder="Search Tasks">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task Name</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="tabel1">
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+            <tbody id="tabel">
+                <!-- Table rows will be dynamically added here -->
+            </tbody>
+            
+        </table>
+
+    </div>
+
+    <script>
+        const request = new XMLHttpRequest();
+
+request.open('GET', 'https://64b9313b79b7c9def6c0bc99.mockapi.io/task');
+request.send();
+console.log(request.responseText);
+
+request.addEventListener('load', function(){
+    
+    console.log(this.responseText);
+    const data = JSON.parse(this.responseText);
+    let print=``
+   for (let i = 0; i < data.length; i++) {
+    
+        print +=`<tr>
+                <td>${data[i].id}</td>
+                <td>${data[i].taskname}</td>
+                <td><input type="button" value="Edit" class="edit"></td>
+                <td><input type="button" value="Del" class="del" onclick="deleteTask(${data[i].id})"></td>
+
+                
+            </tr>`
+
+    
+   
+tabel1.innerHTML=print
+    
+   }
+});
+
+
+        // Avoid using global variables
+        function addTaskToArray(taskText) {
+            const task = {
+                id: Date.now(),
+                taskname: taskText,
+                completed: false,
+            };
+            arrayOfTasks.push(task);
+            addDataToLocalStorageFrom(arrayOfTasks);
+            displayTasks();
+        }
+
+        function addDataToLocalStorageFrom(arrayOfTasks) {
+            window.localStorage.setItem("tasks", JSON.stringify(arrayOfTasks));
+        }
+
+        function getDataFromLocalStorage() {
+            let data = window.localStorage.getItem("tasks");
+            if (data) {
+                arrayOfTasks = JSON.parse(data);
+            }
+        }
+
+        function displayTasks() {
+            let print = "";
+            for (let i = 0; i < arrayOfTasks.length; i++) {
+                print += `<tr>
+                            <td>${arrayOfTasks[i].id}</td>
+                            <td>${arrayOfTasks[i].taskname}</td>
+                            <td><input type="button" value="Edit" class="edit"></td>
+                            <td><input type="button" value="Del" class="del" onclick="deleteTask(${arrayOfTasks[i].id})"></td>
+                        </tr>`;
+            }
+            document.getElementById("tabel").innerHTML = print;
+        }
+
+        function addTask() {
+            let input = document.getElementById("addTask");
+            if (input.value !== "") {
+                addTaskToArray(input.value);
+                input.value = "";
+            }
+        }
+
+        function deleteTask(id) {
+            arrayOfTasks = arrayOfTasks.filter((task) => task.id !== id);
+            addDataToLocalStorageFrom(arrayOfTasks);
+            displayTasks();
+        }
+
+        // Initialize the array and display existing tasks on page load
+        let arrayOfTasks = [];
+        getDataFromLocalStorage();
+        displayTasks();
+    </script>
+</body>
+</html>

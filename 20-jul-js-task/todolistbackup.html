@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <STYle>
+        table{
+            width: 100%;
+        }
+        th{
+            padding: 10px;
+            background-color: black;
+            font-size:xx-large;
+            color:white
+        }
+        td{
+            padding: 10px;
+            text-align: center;
+            height: 50px;
+            width: 50px;
+            font-size: x-large;
+        }
+        /* td:nth-child(even), th:nth-child(even){
+            background-color: lightblue;
+        } */
+        tr:nth-child(even) {
+        background-color: rgba(150, 212, 212, 0.3);
+        }
+     
+
+        #container{
+            width: 50%;
+            margin:10% 25%  ;
+        }
+
+
+        input[type=text], select {
+        width: 70%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        /* display: inline-block; */
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        }
+        #searchbtn{
+            width: 25%;
+        
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer
+        }
+        input[type=button] {
+        width: 50%;
+        background-color: #0628e7;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        }
+
+        input[type=button]:hover {
+        background-color: #45a0a0;
+        }
+
+        h2{
+            text-align: center;
+            /* margin: 10% 40%; */
+            font-size:70px;
+            font-weight:900;
+        }
+    </STYle>
+</head>
+<body>
+    
+    <div id="container">
+        <h2>To Do List</h2>
+        <div id="searchAdd">
+            <label for="">
+            <input    type="text" id="addTask" name="addTask" placeholder="Enter Task Description">
+            <input onclick="form1(addTask.value , addTask.id)" type="button" value="Add" id="searchbtn" >
+             </label>
+            <input style="width: 100%;" type="text" id="" name="searchTask" placeholder="Search Tasks">
+        
+        </div>
+    <table >
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>task Name</th>
+                <th>update</th>
+                <th>delete</th>
+                
+            </tr>
+    
+        </thead>
+        <tbody id="tabel">
+            
+            <!-- <input  type="button" value="Edit" id="sub"> -->
+        </tbody>
+        <tbody id="tabel1">
+            
+            <!-- <input  type="button" value="Edit" id="sub"> -->
+        </tbody>
+    </div>
+    </table>
+
+    
+<script >
+
+//    - ---------------------------------------------------------------------
+    
+
+// 'use strict';
+// const btn = document.querySelector('.btn-country');
+// const countriesContainer =document.querySelector('.countries');
+// let tabel= document.getElementById("tabel")
+const request = new XMLHttpRequest();
+
+request.open('GET', 'https://64b9313b79b7c9def6c0bc99.mockapi.io/task');
+request.send();
+console.log(request.responseText);
+
+request.addEventListener('load', function(){
+    
+    console.log(this.responseText);
+    const data = JSON.parse(this.responseText);
+    let print=``
+   for (let i = 0; i < data.length; i++) {
+    
+        print +=`<tr>
+                <td>${data[i].id}</td>
+                <td>${data[i].taskname}</td>
+                <td><input  type="button" value="Edit"  class="edit" > </td>
+                <td><input  type="button" value="Del"  class="del"> </td>
+
+                
+            </tr>`
+
+    
+   
+tabel.innerHTML=print
+    
+   }
+});
+
+
+// searchbtn.addEventListener('onclick',editbtnFunction);
+// function editbtnFunction()
+
+// const searchbtn = document.getElementsById("searchbtn");
+// searchbtn.addEventListener('onclick', 
+
+// function form1 (value , id)
+//     {
+//     // localStorage.setItem('name',name)
+//     localStorage.setItem(id , value)
+//     document.getElementById(`${id}out`).innerHTML =`${id} : `+ value;
+//     // document.getElementById(`${id}out`).innerHTML =`${id} : `+ localStorage.getItem.value;
+//     // onkeydown="form1(this.value , this.id)"
+    
+//     }
+localStorage.getItem(id , value);
+function form1(value , id) {
+    localStorage.setItem(id , value);
+    
+    let j=5;
+    j++;
+    // const addtask = document.getElementsByid("addTask");
+    // let addtaskValue = addtask.style.value;
+//   alert(`Please : Add A task to Do <input type="text" id="" name="addTask" placeholder="Enter Task Description">`
+ // );
+
+//  var newtask = window.prompt("please : Add Task you want to do ")
+ print +=`<tr>
+   
+                <td>${j}</td>
+                <td>${value}</td>
+                <td><input  type="button" value="Edit"  class="edit"  </td>
+                <td><input  type="button" value="Del"  class="del" onclick="form2(addTask.value , addTask.id)"> </td>
+
+                
+            </tr>`
+
+    
+   
+tabel1.innerHTML=print
+}
+
+function form2(value , id) {
+    document.getElementById("table1").deleteRow(0);
+}
+
+  
+    // console.log(this.responseText);
+    // const data = JSON.parse(this.responseText);
+//     let print=``
+   
+    
+        
+    
+   
+
+
+// function editbtnFunction() {
+//   var table = document.getElementById("myTable");
+//   var row = table.insertRow(0);
+//   var cell1 = row.insertCell(0);
+//   var cell2 = row.insertCell(1);
+//   cell1.innerHTML = "NEW CELL1";
+//   cell2.innerHTML = "NEW CELL2";
+// }
+
+
+// const html= `
+// <article class="country">
+//     <img class="country__img" src="${data[0].flags.png}" />
+//     <div class="country__data">
+//         <h3 class="country__name">${data[0].name.common}</h3>
+//         <h2 class="country__region">${data[0].region}</h4>
+//             <p class="country__row"><span>x</span>${(+data[0].population/1000000).toFixed(1)}</p>
+//          <p class="country__row"><span>x</span>${data[0].languages.ara}languages</p>
+//          <p class="country__row"><span>Y</span>${data[0].currencies}currencies</p> 
+//          </div> 
+//          </article>
+//          `;
+
+// countriesContainer.insertAdjacentHTML('beforeeend',html);
+// countriesContainer.style.opacity = 1;
+
+
+
+
+
+
+// const request = new XMLHttpRequest();
+// request.open('GET', 'https://restcountries.eu/rest/v2/name/Canada');
+
+// request.onload = function () {
+//   if (request.status === 200) {
+//     const responseData = JSON.parse(request.responseText);
+//     console.log("Country Name:", responseData[0].name);
+//     console.log("Capital:", responseData[0].capital);
+//     console.log("Population:", responseData[0].population);
+//     // Add more properties as needed
+//   } else {
+//     console.error("Request failed. Status:", request.status);
+//   }
+// };
+
+// request.onerror = function () {
+//   console.error("Request error occurred.");
+// };
+
+// request.send();
+
+
+
+        
+        
+
+//         for(let k=0 ; k<3 ; k++){
+//         const td = document.createElement("td");
+//         td.innerHTML = `${data[k].name.common}`;
+//         tr.appendChild(td);
+//             }
+
+
+
+// const divcontainer = document.createElement("div");
+//     divcontainer.style = "display:flex; flex-direction:row ;  flex-wrap: wrap; justify-content:space-evenly ";
+//     for(let i=0 ; i< 2 ; i++) {
+
+//         const divcard = document.createElement("div");
+//         divcard.style = "border : 5px solid black ; width : 200px ";
+//         const head = document.createElement("h2");
+//         head.style = "text-align: center";
+//         head.innerHTML = `${data[0].name.common}`;
+
+//         const p = document.createElement("p");
+//         p.innerHTML = `${data[0].region}`;
+//         p.style="font-size:16px ; text-align:center"
+//         const imag = document.createElement("img");
+//         imag.src = `${data[0].flags.png}`;
+//         imag.style = "height:300px ; width : 100%"
+
+
+
+       
+//         document.body.appendChild(divcontainer);
+//         divcontainer.appendChild(divcard);
+//         divcard.appendChild(head);
+//         divcard.appendChild(p);
+//         divcard.appendChild(imag);
+        
+//     }
+
+</script>
+</body>
+</html>
